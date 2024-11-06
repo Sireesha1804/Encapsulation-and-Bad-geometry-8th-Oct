@@ -1,0 +1,33 @@
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.__account_number = account_number    
+        self.__balance = balance                  
+
+    # Private method to calculate interest on the balance
+    def __calculate_interest(self, rate):
+        return self.__balance * (rate / 100)
+
+    # Private method to update the balance
+    def __update_balance(self, amount):
+        self.__balance += amount
+        return f"New balance: ${self.__balance}"
+
+    # Private method to display account information
+    def __display_account_info(self):
+        return f"Account Number: {self.__account_number}, Balance: euros{self.__balance}"
+
+    def get_account_info_with_interest(self, interest_rate): 
+       
+        # Applying interest 
+        interest = self.__calculate_interest(interest_rate)
+        self.__update_balance(interest)
+        return self.__display_account_info()
+ 
+
+# Input
+account = BankAccount("123456789", 5000)
+
+account_info = account.get_account_info_with_interest(8)  # Applying 8% interest
+print(account_info)
+
+               
